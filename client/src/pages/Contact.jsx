@@ -3,13 +3,14 @@ import emailjs from "@emailjs/browser";
 import { 
   MapPin, Phone, Mail, Send, CheckCircle, 
   Instagram, Facebook, Linkedin, Twitter, 
-  Loader2, MessageSquare, ExternalLink, AlertCircle
+  Loader2, MessageSquare, ExternalLink, AlertCircle,
+  Globe, ShieldCheck, Zap, ChevronRight
 } from "lucide-react";
 
 export default function Contact() {
   const formRef = useRef();
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle, loading, success, error
+  const [status, setStatus] = useState("idle");
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -19,19 +20,17 @@ export default function Contact() {
   const sendEmail = (e) => {
     e.preventDefault();
     setStatus("loading");
-
-    // REPLACE THESE WITH YOUR ACTUAL EMAILJS CREDENTIALS
+    
+    // EmailJS logic remains the same
     const SERVICE_ID = "service_xxxxxxx"; 
     const TEMPLATE_ID = "template_xxxxxxx";
     const PUBLIC_KEY = "your_public_key_here";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
-      .then((result) => {
-          console.log(result.text);
+      .then(() => {
           setStatus("success");
           setFormData({ name: "", email: "", subject: "", message: "" });
-      }, (error) => {
-          console.log(error.text);
+      }, () => {
           setStatus("error");
       });
   };
@@ -42,167 +41,207 @@ export default function Contact() {
   };
 
   return (
-    <main className="bg-white dark:bg-bizDark min-h-screen font-sans overflow-x-hidden pt-4">
+    <main className="bg-white dark:bg-[#0a0f1a] min-h-screen font-sans overflow-x-hidden transition-colors duration-500">
       
-      {/* 1. HERO SECTION */}
-      <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+      {/* --- 1. COMMAND CENTER HERO --- */}
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://bizlinkads.co.ke/wp-content/themes/wordpressbizlinkchild/assets/images/landing/hero-contact-us-2.jpg" 
-            className={`w-full h-full object-cover transition-transform duration-[10000ms] ${isLoaded ? 'scale-110' : 'scale-100'}`}
+            className={`w-full h-full object-cover grayscale transition-transform duration-[15000ms] ${isLoaded ? 'scale-110' : 'scale-100'}`}
             alt="Contact Hero" 
           />
-          <div className="absolute inset-0 bg-bizBlue/50 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-bizBlue/90 via-bizBlue/40 to-white dark:from-[#0a0f1a] dark:via-[#0a0f1a]/80 dark:to-[#0a0f1a]" />
+          {/* Tech Grid Overlay */}
+          <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.1]" 
+               style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm1 1h38v38H1V1z' fill='%23fff' fill-opacity='1'/%3E%3C/svg%3E")` }} />
         </div>
-        <div className={`relative z-10 text-center px-6 transition-all duration-1000 transform ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h1 className="text-white text-5xl md:text-8xl font-black uppercase tracking-tighter drop-shadow-2xl mb-4">
-            Contact <span className="text-bizYellow">Us</span>
+
+        <div className="relative z-10 text-center px-6">
+          <div className="inline-flex items-center gap-2 bg-bizRed text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.4em] mb-6 animate-pulse">
+            Connection Protocol Active
+          </div>
+          <h1 className="text-6xl md:text-[100px] font-black leading-none uppercase tracking-tighter mb-4 italic">
+            <span className="text-white">Initialize</span> <br />
+            <span className="text-transparent" style={{ WebkitTextStroke: '2px #FFD700' }}>Contact</span>
           </h1>
-          <p className="text-bizYellow text-xl md:text-2xl font-bold italic tracking-wide">
-            Let's Start Your Marketing Journey
+          <p className="text-white/60 text-lg md:text-xl font-bold uppercase tracking-widest max-w-xl mx-auto">
+             Secure channels open for strategic partnership inquiries.
           </p>
         </div>
+        
+        {/* Animated Scan Line */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-bizYellow/20 animate-scan z-20" />
       </section>
 
-      {/* 2. CONTACT CONTENT GRID */}
-      <section className="py-20 md:py-32 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-stretch">
+      {/* --- 2. INTEGRATED CONTACT MODULE --- */}
+      <section className="py-24 relative z-30 -mt-32 px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 items-start">
           
-          {/* LEFT COLUMN: INFO */}
-          <div className={`space-y-8 transition-all duration-1000 delay-300 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-            <div>
-              <h2 className="text-4xl md:text-6xl font-black text-bizBlue dark:text-bizYellow uppercase tracking-tighter mb-6">
-                Get in <span className="text-bizRed">Touch</span>
+          {/* LEFT: HQ ACCESS POINTS (4 Columns) */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="bg-bizBlue dark:bg-[#0d1424] p-10 rounded-[3rem] text-white border border-white/10 shadow-2xl">
+              <h2 className="text-3xl font-black uppercase italic tracking-tighter mb-8">
+                Main <span className="text-bizYellow">Hub</span>
               </h2>
-              <div className="w-20 h-2 bg-bizYellow rounded-full mb-10" />
-            </div>
-
-            <div className="grid gap-4">
-              <ContactMethod 
-                icon={<MapPin className="text-bizBlue" />}
-                title="Office Location"
-                desc="Ahadi House, Nakuru, Kenya"
-                link="https://maps.app.goo.gl/p8auFqgcJPPn7CRT9"
-              />
-              <ContactMethod 
-                icon={<Phone className="text-[#1DB954]" />}
-                title="Phone Number"
-                desc="+254 780 985 052"
-                link="tel:+254780985052"
-              />
-              <ContactMethod 
-                icon={<Mail className="text-[#FF9900]" />}
-                title="Email Address"
-                desc="bizlinkadsdigital@gmail.com"
-                link="mailto:bizlinkadsdigital@gmail.com"
-              />
-            </div>
-
-            {/* Social Links */}
-            <div className="pt-8">
-              <h4 className="text-bizBlue dark:text-bizYellow font-black uppercase text-sm tracking-widest mb-6">Follow Our Socials</h4>
-              <div className="flex flex-wrap gap-4">
-                <SocialBtn icon={<Instagram />} color="bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]" href="https://www.instagram.com/bizlinkadsdigital/" />
-                <SocialBtn icon={<Facebook />} color="bg-[#1877F2]" href="https://www.facebook.com/BizLinkAdsDigital" />
-                <SocialBtn icon={<Linkedin />} color="bg-[#0072b1]" href="https://www.linkedin.com/in/bizlink-ads-digital-38063a363/" />
-                <SocialBtn icon={<Twitter />} color="bg-black" href="https://x.com/BizlinkD14934" />
+              
+              <div className="space-y-4">
+                <AccessPoint 
+                  icon={<MapPin />}
+                  label="Coordinates"
+                  value="Ahadi House, Nakuru, Kenya"
+                  link="https://maps.app.goo.gl/p8auFqgcJPPn7CRT9"
+                />
+                <AccessPoint 
+                  icon={<Phone />}
+                  label="Voice Link"
+                  value="+254 780 985 052"
+                  link="tel:+254780985052"
+                />
+                <AccessPoint 
+                  icon={<Mail />}
+                  label="Digital Packet"
+                  value="bizlinkadsdigital@gmail.com"
+                  link="mailto:bizlinkadsdigital@gmail.com"
+                />
               </div>
+
+              {/* Network Connectivity */}
+              <div className="mt-12 pt-8 border-t border-white/5">
+                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-6 text-center">External Networks</p>
+                <div className="flex justify-between items-center bg-white/5 p-4 rounded-2xl">
+                   <SocialIcon icon={<Instagram />} href="https://www.instagram.com/bizlinkadsdigital/" />
+                   <div className="w-px h-6 bg-white/10" />
+                   <SocialIcon icon={<Facebook />} href="https://www.facebook.com/BizLinkAdsDigital" />
+                   <div className="w-px h-6 bg-white/10" />
+                   <SocialIcon icon={<Linkedin />} href="https://www.linkedin.com/in/bizlink-ads-digital-38063a363/" />
+                   <div className="w-px h-6 bg-white/10" />
+                   <SocialIcon icon={<Twitter />} href="https://x.com/BizlinkD14934" />
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Support Card */}
+            <div className="bg-bizYellow p-8 rounded-[2.5rem] flex items-center justify-between group cursor-pointer overflow-hidden relative shadow-xl">
+               <div className="relative z-10">
+                  <h4 className="text-bizBlue font-black uppercase tracking-tighter text-2xl leading-none">Immediate <br /> Assistance</h4>
+                  <p className="text-bizBlue/60 font-bold text-xs mt-2 uppercase">WhatsApp Support Hub</p>
+               </div>
+               <div className="relative z-10 w-12 h-12 bg-bizBlue text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <ChevronRight />
+               </div>
+               <Zap className="absolute -right-4 -bottom-4 text-bizBlue/5 w-32 h-32" />
             </div>
           </div>
 
-          {/* RIGHT COLUMN: EMAILJS FORM */}
-          <div className={`transition-all duration-1000 delay-500 ${isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
-            <div className="bg-bizYellow p-1 rounded-[2.5rem] shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
-              <div className="bg-white dark:bg-gray-800 rounded-[2.3rem] p-8 md:p-12 -rotate-1 hover:rotate-0 transition-transform duration-500 border-2 border-bizYellow/20">
-                <h3 className="text-3xl font-black text-bizBlue dark:text-bizYellow mb-8 uppercase tracking-tighter flex items-center gap-3">
-                  <MessageSquare size={32} /> Send a Message
-                </h3>
+          {/* RIGHT: MESSAGE MODULE (7 Columns) */}
+          <div className="lg:col-span-7">
+            <div className="bg-white dark:bg-[#0a0f1a] p-8 md:p-16 rounded-[3rem] border-2 border-slate-100 dark:border-white/5 shadow-2xl relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-10 opacity-5 text-bizBlue dark:text-white pointer-events-none">
+                  <MessageSquare size={120} />
+               </div>
+
+               <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-10">
+                   <div className="w-12 h-12 bg-bizRed/10 text-bizRed rounded-xl flex items-center justify-center">
+                      <Send size={24} />
+                   </div>
+                   <h3 className="text-3xl font-black text-bizBlue dark:text-white uppercase tracking-tighter italic">Message <span className="text-bizRed">Protocol</span></h3>
+                </div>
 
                 {status === "success" ? (
-                  <div className="text-center py-12 animate-in zoom-in duration-500">
-                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <CheckCircle size={48} />
-                    </div>
-                    <h4 className="text-2xl font-black text-bizBlue mb-2">Message Sent!</h4>
-                    <p className="text-gray-500 font-bold">Thank you. We'll be in touch soon.</p>
-                    <button onClick={() => setStatus("idle")} className="mt-8 text-bizRed font-black uppercase underline">Send another</button>
+                  <div className="text-center py-20 bg-green-50 dark:bg-green-900/10 rounded-[2rem] border-2 border-dashed border-green-200">
+                    <CheckCircle size={64} className="text-green-500 mx-auto mb-6 animate-bounce" />
+                    <h4 className="text-2xl font-black text-bizBlue dark:text-white mb-2">Transmission Successful</h4>
+                    <p className="text-gray-500 dark:text-gray-400 font-bold">A specialist will respond shortly.</p>
+                    <button onClick={() => setStatus("idle")} className="mt-8 px-8 py-3 bg-bizBlue text-white rounded-xl font-black text-xs uppercase tracking-widest">Send New Message</button>
                   </div>
                 ) : (
-                  <form ref={formRef} onSubmit={sendEmail} className="space-y-5">
-                    {status === "error" && (
-                      <div className="bg-red-50 text-red-600 p-4 rounded-xl flex items-center gap-3 font-bold border border-red-200">
-                        <AlertCircle size={20} /> Something went wrong. Please try again.
-                      </div>
-                    )}
-                    <div className="grid md:grid-cols-2 gap-5">
-                      <input 
-                        type="text" name="name" required placeholder="Full Name" value={formData.name} onChange={handleInputChange}
-                        className="w-full p-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-100 dark:border-gray-600 rounded-xl focus:border-bizBlue outline-none transition-all font-bold text-bizBlue dark:text-bizYellow"
-                      />
-                      <input 
-                        type="email" name="email" required placeholder="Email Address" value={formData.email} onChange={handleInputChange}
-                        className="w-full p-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-100 dark:border-gray-600 rounded-xl focus:border-bizBlue outline-none transition-all font-bold text-bizBlue dark:text-bizYellow"
-                      />
+                  <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <InputGroup label="Full Name" name="name" type="text" value={formData.name} onChange={handleInputChange} placeholder="John Doe" />
+                      <InputGroup label="Access Email" name="email" type="email" value={formData.email} onChange={handleInputChange} placeholder="john@company.com" />
                     </div>
-                    <input 
-                      type="text" name="subject" required placeholder="Subject" value={formData.subject} onChange={handleInputChange}
-                      className="w-full p-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-100 dark:border-gray-600 rounded-xl focus:border-bizBlue outline-none transition-all font-bold text-bizBlue dark:text-bizYellow"
-                    />
-                    <textarea 
-                      name="message" required rows="4" placeholder="Your Message" value={formData.message} onChange={handleInputChange}
-                      className="w-full p-4 bg-gray-50 dark:bg-gray-700 border-2 border-gray-100 dark:border-gray-600 rounded-xl focus:border-bizBlue outline-none transition-all font-bold text-bizBlue dark:text-bizYellow"
-                    />
+                    <InputGroup label="Subject Identifier" name="subject" type="text" value={formData.subject} onChange={handleInputChange} placeholder="Campaign Inquiry" />
+                    <div className="flex flex-col gap-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-4">Detailed Message</label>
+                        <textarea 
+                          name="message" required rows="5" placeholder="Outline your requirements..." value={formData.message} onChange={handleInputChange}
+                          className="w-full p-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-bizYellow dark:focus:border-bizYellow rounded-[2rem] outline-none transition-all font-bold text-bizBlue dark:text-white placeholder:text-gray-300 dark:placeholder:text-gray-600"
+                        />
+                    </div>
                     
                     <button 
                       type="submit" 
                       disabled={status === "loading"}
-                      className="w-full py-5 bg-bizBlue text-white rounded-xl font-black text-xl flex items-center justify-center gap-3 shadow-xl hover:bg-bizRed transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-70"
+                      className="w-full py-6 bg-bizBlue dark:bg-bizYellow text-white dark:text-bizBlue rounded-2xl font-black text-xl flex items-center justify-center gap-4 shadow-xl hover:bg-bizRed hover:text-white transition-all hover:translate-y-[-4px] active:translate-y-0 disabled:opacity-50"
                     >
                       {status === "loading" ? (
                         <Loader2 className="animate-spin" />
                       ) : (
-                        <><Send size={24} /> SEND MESSAGE</>
+                        <><Zap size={20} /> INITIALIZE TRANSMISSION</>
                       )}
                     </button>
                   </form>
                 )}
-              </div>
+               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOOTER CTA */}
-      <section className="bg-bizBlue py-16 text-center border-t-8 border-bizYellow">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-white text-3xl md:text-4xl font-black uppercase mb-4 italic tracking-widest leading-tight">Empowering Kenyan Brands Since Day One.</h2>
-          <p className="text-bizYellow font-black text-lg uppercase tracking-tighter">Bizlink Ads Digital</p>
-        </div>
-      </section>
+      {/* --- 3. GLOBAL STATUS FOOTER --- */}
+      <footer className="py-12 bg-slate-50 dark:bg-black/40 border-t border-slate-100 dark:border-white/5">
+         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center gap-3">
+               <Globe className="text-bizRed animate-spin-slow" size={20} />
+               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">Regional Visibility: Active</span>
+            </div>
+            <div className="flex items-center gap-6">
+               <div className="flex items-center gap-2">
+                  <ShieldCheck size={16} className="text-bizYellow" />
+                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Secure Protocol</span>
+               </div>
+               <p className="text-xs font-black text-bizBlue dark:text-white uppercase tracking-tighter">Bizlink Ads Digital © 2025</p>
+            </div>
+         </div>
+      </footer>
     </main>
   );
 }
 
 // --- SUB-COMPONENTS ---
-function ContactMethod({ icon, title, desc, link }) {
+
+function AccessPoint({ icon, label, value, link }) {
   return (
-    <a href={link} target="_blank" rel="noreferrer" className="flex items-center gap-6 p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md border-2 border-gray-50 dark:border-gray-700 hover:border-bizYellow transition-all group">
-      <div className="w-16 h-16 bg-gray-50 dark:bg-gray-700 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-        {React.cloneElement(icon, { size: 32 })}
+    <a href={link} target="_blank" rel="noreferrer" className="flex items-start gap-4 p-5 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-all group">
+      <div className="w-10 h-10 bg-bizYellow text-bizBlue rounded-lg flex items-center justify-center shrink-0 group-hover:rotate-6 transition-transform">
+        {React.cloneElement(icon, { size: 18 })}
       </div>
-      <div className="flex-1 overflow-hidden">
-        <h4 className="text-gray-400 font-black uppercase text-[10px] tracking-widest mb-1">{title}</h4>
-        <p className="text-bizBlue dark:text-bizYellow font-black text-lg truncate md:whitespace-normal">{desc}</p>
+      <div>
+        <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">{label}</p>
+        <p className="text-sm font-bold text-white group-hover:text-bizYellow transition-colors">{value}</p>
       </div>
-      <ExternalLink size={18} className="text-gray-300" />
     </a>
   );
 }
 
-function SocialBtn({ icon, color, href }) {
+function InputGroup({ label, name, type, value, onChange, placeholder }) {
   return (
-    <a href={href} target="_blank" rel="noreferrer" className={`${color} text-white p-4 rounded-xl shadow-lg hover:scale-125 hover:-translate-y-2 transition-all duration-300`}>
-      {React.cloneElement(icon, { size: 24 })}
+    <div className="flex flex-col gap-2">
+      <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-4">{label}</label>
+      <input 
+        type={type} name={name} required placeholder={placeholder} value={value} onChange={onChange}
+        className="w-full p-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-bizYellow dark:focus:border-bizYellow rounded-2xl outline-none transition-all font-bold text-bizBlue dark:text-white placeholder:text-gray-300 dark:placeholder:text-gray-600"
+      />
+    </div>
+  );
+}
+
+function SocialIcon({ icon, href }) {
+  return (
+    <a href={href} target="_blank" rel="noreferrer" className="text-white/40 hover:text-bizYellow hover:scale-125 transition-all">
+      {React.cloneElement(icon, { size: 20 })}
     </a>
   );
 }
