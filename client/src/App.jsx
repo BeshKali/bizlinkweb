@@ -49,8 +49,8 @@ function App() {
           {/* Service sub routes */}
           <Route path="/services/print-marketing" element={<PrintMarketing />} />
           <Route path="/services/pr-marketing" element={<ExperientialPR />} />
-          <Route path="/outdoor-marketing" element={<OutdoorVisibility />} />
-          <Route path="/branding" element={<BrandIdentity />} />
+          <Route path="/services/outdoor-marketing" element={<OutdoorVisibility />} />
+          <Route path="/services/branding" element={<BrandIdentity />} />
 
             {/* Blog / Industries Pages */}
             <Route path="/blog/agriculture" element={<Agriculture />} />

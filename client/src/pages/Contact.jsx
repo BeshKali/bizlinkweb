@@ -22,9 +22,9 @@ export default function Contact() {
     setStatus("loading");
     
     // EmailJS logic remains the same
-    const SERVICE_ID = "service_xxxxxxx"; 
-    const TEMPLATE_ID = "template_xxxxxxx";
-    const PUBLIC_KEY = "your_public_key_here";
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
       .then(() => {

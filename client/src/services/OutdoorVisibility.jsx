@@ -1,191 +1,225 @@
-import React from "react";
-// Fixed import: Screwdriver changed to Wrench
+import React, { useRef } from "react";
 import { 
   Building2, MapPin, Target, Map, 
   Wrench, BarChart3, Palette, Zap, 
-  ChevronRight, LocateFixed
+  ChevronRight, LocateFixed, Layers,
+  Monitor, Truck, Globe, Navigation
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function OutdoorVisibility() {
+  const infrastructureRef = useRef(null);
+
+  const scrollToInfrastructure = () => {
+    infrastructureRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="pt-0 transition-colors duration-300 bg-white dark:bg-bizDark min-h-screen">
+    <main className="bg-white dark:bg-[#0a0f1a] min-h-screen font-sans overflow-x-hidden transition-colors duration-500">
       
-      {/* --- HERO SECTION (DOMINANT YELLOW) --- */}
-      <section className="relative min-h-[90vh] md:h-[75vh] flex items-center bg-bizYellow overflow-hidden text-bizBlue">
-        {/* Grayscale background image overlay */}
-        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-            <img 
-              src="https://bizlinkads.co.ke/wp-content/themes/wordpressbizlinkchild/assets/images/landing/hero-outdoor-marketing" 
-              alt=""
-              className="w-full h-full object-cover grayscale"
-            />
+      {/* --- 1. HERO PROTOCOL NODE --- */}
+      <section className="relative min-h-screen flex items-center bg-bizYellow overflow-hidden">
+        {/* Tech Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 opacity-20" 
+               style={{ backgroundImage: `radial-gradient(circle, #000 1px, transparent 1px)`, backgroundSize: '50px 50px' }} />
+          <div className="absolute inset-0 bg-gradient-to-r from-bizYellow via-bizYellow/80 to-transparent" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 py-12">
-          <div className="text-left">
-            <div className="inline-flex items-center gap-2 bg-bizRed text-white px-4 py-1 rounded mb-6 text-xs font-black uppercase tracking-widest animate-pulse">
-              <LocateFixed size={14} /> Maximum Exposure
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center relative z-10 pt-20 pb-12">
+          
+          {/* Left Content */}
+          <div className="lg:col-span-7 text-bizBlue">
+            <div className="inline-flex items-center gap-3 bg-white/30 backdrop-blur-md border border-white/30 px-4 py-2 rounded-full mb-8">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-bizRed opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-bizRed"></span>
+              </span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em]">System Node: Outdoor Grid</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-bizBlue mb-6 uppercase tracking-tighter leading-[0.9]">
+
+            <h1 className="text-6xl md:text-[100px] font-black mb-8 uppercase tracking-tighter leading-[0.85] italic">
               Outdoor <br /> 
-              <span className="text-white drop-shadow-md text-6xl md:text-8xl">Visibility</span>
+              <span className="text-transparent" style={{ WebkitTextStroke: '2px #1E3A8A' }}>Visibility</span>
             </h1>
-            <p className="text-xl md:text-2xl text-bizBlue font-bold max-w-xl mb-8 leading-tight">
-              Dominate the landscape with strategic billboards and signage that make your brand impossible to ignore.
+
+            <p className="text-xl md:text-2xl font-bold max-w-xl mb-12 leading-tight text-bizBlue/70">
+              Engineering city-scale brand dominance through precision outdoor infrastructure and high-traffic corridor optimization.
             </p>
-            <Link to="/contact-us-2" className="inline-flex items-center gap-3 bg-bizBlue text-white px-10 py-4 rounded-full font-black uppercase hover:bg-bizRed transition-all shadow-xl group">
-              Book Your Space <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+
+            <div className="flex flex-wrap gap-6 items-center">
+              <Link to="/contact-us-2" className="group bg-bizBlue text-white px-10 py-5 rounded-2xl font-black uppercase text-sm tracking-widest hover:bg-bizRed transition-all shadow-2xl flex items-center gap-3">
+                Initialize Campaign <ChevronRight className="group-hover:translate-x-2 transition-transform" />
+              </Link>
+              
+              {/* NEW DYNAMIC BUTTON */}
+              <button 
+                onClick={scrollToInfrastructure}
+                className="group bg-white border-2 border-bizBlue text-bizBlue px-10 py-5 rounded-2xl font-black uppercase text-sm tracking-widest hover:bg-bizBlue hover:text-white transition-all flex items-center gap-3"
+              >
+                Explore Network <Navigation className="group-hover:rotate-45 transition-transform" size={18}/>
+              </button>
+            </div>
           </div>
           
-          {/* Hero Image Cutout */}
-          <div className="hidden lg:block relative">
-             <div className="absolute inset-0 bg-bizBlue rotate-3 rounded-[40px]" />
-             <div className="relative z-10 overflow-hidden rounded-[40px] border-8 border-white shadow-2xl transition-transform hover:-rotate-2 duration-500">
-                <img 
-                  src="https://bizlinkads.co.ke/wp-content/themes/wordpressbizlinkchild/assets/images/landing/hero-outdoor-marketing" 
-                  alt="Outdoor Billboard Advertising"
-                  className="w-full h-[500px] object-cover"
-                />
-             </div>
+          {/* Right HUD Image */}
+          <div className="lg:col-span-5 hidden lg:block relative">
+            <div className="relative overflow-hidden rounded-[3.5rem] border-[12px] border-white/40 bg-[#05080f] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] w-full aspect-[4/5]">
+              <img
+                src="https://bizlinkads.co.ke/wp-content/themes/wordpressbizlinkchild/assets/images/landing/hero-outdoor-marketing"
+                alt="Outdoor Grid"
+                className="absolute inset-0 w-full h-full object-cover grayscale brightness-50"
+              />
+              {/* Technical Overlay Graphics */}
+              <div className="absolute inset-0 bg-gradient-to-t from-bizBlue/80 via-transparent to-transparent" />
+              <div className="absolute top-10 right-10 flex flex-col gap-2">
+                 <div className="h-1 w-12 bg-bizYellow animate-pulse" />
+                 <div className="h-1 w-8 bg-bizRed" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* --- SERVICES GRID (WHITE/CLEAN THEME) --- */}
-      <section className="py-24 px-6 bg-white dark:bg-bizDark transition-colors">
+      {/* --- 2. STATS BRIDGE (Blue Core) --- */}
+      <section className="bg-bizBlue py-16 relative z-20 shadow-2xl">
+         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+            <StatBlock val="47" label="Counties Covered" />
+            <StatBlock val="24/7" label="Operational Grid" />
+            <StatBlock val="100%" label="Premium Sites" />
+            <StatBlock val="FAST" label="Deployment Speed" />
+         </div>
+      </section>
+
+      {/* --- 3. DYNAMIC SHOWCASE SECTION (Strategic Grid) --- */}
+      <section ref={infrastructureRef} className="py-32 px-6 bg-white dark:bg-[#0a0f1a] relative">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
             <div className="max-w-2xl">
-              <h2 className="text-4xl md:text-6xl font-black text-bizBlue dark:text-bizYellow uppercase leading-none mb-6">
-                Outdoor <br /> Solutions
-              </h2>
-              <div className="h-2 w-32 bg-bizRed" />
+              <h2 className="text-sm font-black text-bizRed uppercase tracking-[0.5em] mb-4">Infrastructure Matrix</h2>
+              <h3 className="text-5xl md:text-8xl font-black text-bizBlue dark:text-white uppercase leading-none tracking-tighter italic">
+                The Visibility <br /> <span className="text-bizYellow">Architecture</span>
+              </h3>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 font-bold max-w-md text-lg">
-              Maximizing your outdoor presence through strategic placement and eye-catching execution.
+            <p className="text-xl text-gray-500 font-bold max-w-sm border-l-4 border-bizBlue pl-6">
+              A multi-tier approach to physical brand dominance across Kenya's urban hubs.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <VisibilityCard 
-              icon={<Building2 size={44} />}
-              title="Strategic Billboards"
-              desc="High-impact designs and premium site placements in high-traffic urban corridors across Kenya."
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <InfrastructureCard 
+              icon={<Building2 />} 
+              title="Strategic Billboards" 
+              desc="High-impact 10x12 and 12x12 units positioned at primary transit bottlenecks for 100% unavoidable reach."
+              tags={["Static", "Backlit", "High-Reach"]}
             />
-            <VisibilityCard 
-              icon={<MapPin size={44} />}
-              title="Professional Signage"
-              desc="Storefront signs, LED displays, and directional branding that enhances your physical business presence."
+            <InfrastructureCard 
+              icon={<Monitor />} 
+              title="Digital LED Grid" 
+              desc="High-luminance digital displays with real-time content deployment for dynamic brand messaging."
+              tags={["DOOH", "Full Motion", "Programmatic"]}
             />
-            <VisibilityCard 
-              icon={<Target size={44} />}
-              title="Transit Marketing"
-              desc="Vehicle wraps, transit advertising, and street furniture branding for mobile visibility."
+            <InfrastructureCard 
+              icon={<Truck />} 
+              title="Transit Networks" 
+              desc="City-wide mobile coverage using public transit and corporate fleet wraps to follow the audience's journey."
+              tags={["Mobile", "Wraps", "Commuter"]}
+            />
+            <InfrastructureCard 
+              icon={<Globe />} 
+              title="Street Furniture" 
+              desc="Pedestrian-level engagement through bus shelters, directional signage, and modern kiosk installations."
+              tags={["Urban", "Pedestrian", "Closer-Look"]}
             />
           </div>
         </div>
       </section>
 
-      {/* --- WHY US (STRONG BLUE SECTION WITH YELLOW BOXES) --- */}
-      <section className="py-24 px-6 bg-bizBlue transition-colors">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-12 items-center">
-            <div className="lg:col-span-1">
-                <h3 className="text-4xl md:text-5xl font-black text-bizYellow uppercase leading-none mb-6">Why <br /> Choose Us?</h3>
-                <div className="h-1 w-20 bg-bizRed mb-6" />
-                <p className="text-white/80 font-bold text-lg">We combine reach with creative dominance.</p>
-            </div>
-            <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <HighlightBox icon={<Target />} title="Proven Reach" desc="High-traffic formats engineered for maximum brand recall." />
-                <HighlightBox icon={<Map />} title="Prime Locations" desc="Access to premium billboard sites and strategic urban touchpoints." />
-                <HighlightBox icon={<Wrench />} title="End-to-End" desc="Permits, production, and installation handled by one expert team." />
-                <HighlightBox icon={<BarChart3 />} title="Measurable ROI" desc="Reporting that quantifies visibility and audience engagement." />
-            </div>
-        </div>
-      </section>
-
-      {/* --- PROCESS (LIGHT THEME NEUTRAL) --- */}
-      <section className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-black text-bizBlue dark:text-bizYellow uppercase mb-4">Our Methodology</h2>
-            <p className="text-bizRed font-black uppercase tracking-widest text-sm">A Data-Driven Outdoor Process</p>
+      {/* --- 4. DEPLOYMENT PROTOCOL (Deep Tech) --- */}
+      <section className="py-32 bg-bizBlue relative overflow-hidden text-white">
+        <div className="absolute top-0 right-0 text-[20rem] font-black text-white/5 select-none leading-none -translate-y-20">OUT</div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">
+              Deployment <span className="text-bizYellow">Protocol</span>
+            </h2>
+            <div className="h-2 w-32 bg-bizRed mx-auto rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 relative">
-            <div className="hidden lg:block absolute top-12 left-24 right-24 h-0.5 border-t-2 border-dashed border-bizYellow z-0" />
-            <ProcessStep step="01" icon={<MapPin />} title="Placement" desc="Data-driven location selection for maximum audience reach." />
-            <ProcessStep step="02" icon={<Palette />} title="Design" desc="Eye-catching creative that effectively communicates your message." />
-            <ProcessStep step="03" icon={<BarChart3 />} title="Analytics" desc="Comprehensive reporting to measure your campaign's impact." />
-            <ProcessStep step="04" icon={<Zap />} title="Delivery" desc="Fast production and professional installation on your timeline." />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+            <ProcessModule step="01" icon={<MapPin />} title="Placement" desc="Geo-optimized location selection based on traffic density data." />
+            <ProcessModule step="02" icon={<Palette />} title="Design" desc="Visibility testing to ensure maximum impact from 200m+." />
+            <ProcessModule step="03" icon={<BarChart3 />} title="Analytics" desc="Performance tracking and reach optimization metrics." />
+            <ProcessModule step="04" icon={<Zap />} title="Deployment" desc="Rapid physical installation by our certified engineering team." />
           </div>
         </div>
       </section>
 
-      {/* --- FINAL CTA (DOMINANT YELLOW) --- */}
-      <section className="py-24 px-6 text-center">
-        <div className="max-w-5xl mx-auto bg-bizBlue p-12 md:p-20 rounded-[40px] shadow-2xl relative overflow-hidden group">
-          <div className="absolute -bottom-10 -right-10 text-bizYellow/10 group-hover:scale-110 transition-transform">
-             <Target size={300} />
+      {/* --- 5. COMMAND CTA --- */}
+      <section className="py-32 px-6 bg-slate-50 dark:bg-[#0a0f1a]">
+        <div className="max-w-6xl mx-auto bg-bizYellow p-12 md:p-24 rounded-[4rem] shadow-2xl relative overflow-hidden group border-b-[20px] border-bizBlue">
+          <div className="absolute bottom-0 right-0 p-10 opacity-10 text-bizBlue group-hover:rotate-12 transition-transform pointer-events-none">
+             <Layers size={300} />
           </div>
           
-          <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl font-black text-bizYellow uppercase mb-6 leading-tight max-w-3xl mx-auto">
-                Ready to dominate <br /> the outdoors?
+          <div className="relative z-10 text-center text-bizBlue">
+            <h2 className="text-5xl md:text-[80px] font-black uppercase mb-8 leading-[0.85] tracking-tighter italic">
+              Ready to Initialize <br /> City Dominance?
             </h2>
-            <p className="text-bizYellow font-bold text-xl mb-10 max-w-xl mx-auto">
-              Transform your brand's physical presence and drive real-world business growth today.
+            <p className="text-bizBlue/70 font-bold text-2xl mb-12 max-w-2xl mx-auto leading-tight">
+              Command Kenya’s outdoor landscape with engineered visibility.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact-us-2" className="bg-bizGray text-white px-12 py-5 rounded-full font-black uppercase text-lg hover:bg-bizRed transition-all shadow-xl">
-                    Get Started
+            <div className="flex justify-center">
+                <Link to="/contact-us-2" className="bg-bizBlue text-white px-12 py-6 rounded-2xl font-black uppercase text-sm tracking-widest hover:bg-bizRed hover:scale-105 transition-all shadow-xl">
+                    Request Strategic Site Map
                 </Link>
             </div>
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
 
-// --- SUB-COMPONENTS ---
+/* --- SUB COMPONENTS --- */
 
-function VisibilityCard({ icon, title, desc }) {
+function StatBlock({ val, label }) {
   return (
-    <div className="group bg-white dark:bg-gray-800 p-10 rounded-3xl border-2 border-gray-100 dark:border-gray-700 hover:border-bizYellow transition-all hover:shadow-2xl">
-      <div className="text-bizBlue dark:text-bizYellow mb-6 group-hover:text-bizRed transition-colors flex justify-center">
-        {icon}
+    <div className="text-center md:text-left border-l-4 border-bizYellow pl-6">
+       <div className="text-4xl md:text-6xl font-black text-bizYellow italic mb-1">{val}</div>
+       <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">{label}</div>
+    </div>
+  )
+}
+
+function InfrastructureCard({ icon, title, desc, tags }) {
+  return (
+    <div className="group bg-bizBlue p-12 rounded-[3rem] border border-transparent hover:border-bizRed transition-all duration-500 hover:shadow-2xl text-white">
+      <div className="bg-bizYellow text-bizBlue w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+        {React.cloneElement(icon, { size: 32 })}
       </div>
-      <h3 className="text-2xl font-black text-bizBlue dark:text-white uppercase mb-4 leading-tight text-center">{title}</h3>
-      <p className="text-gray-500 dark:text-gray-400 font-bold leading-relaxed text-center">{desc}</p>
+      <h3 className="text-3xl font-black uppercase mb-4 tracking-tighter italic">{title}</h3>
+      <p className="text-white/60 font-bold leading-relaxed mb-8">{desc}</p>
+      <div className="flex flex-wrap gap-2">
+        {tags.map((t, i) => (
+          <span key={i} className="text-[10px] font-black uppercase border border-white/20 px-3 py-1 rounded-full">{t}</span>
+        ))}
+      </div>
     </div>
   );
 }
 
-function HighlightBox({ icon, title, desc }) {
-    return (
-        <div className="bg-bizYellow p-8 rounded-2xl border-l-8 border-bizRed shadow-lg hover:-translate-y-2 transition-transform">
-            <div className="flex items-center gap-4 mb-3">
-                <span className="text-bizBlue">{icon}</span>
-                <h4 className="font-black text-bizBlue uppercase text-lg leading-tight">{title}</h4>
-            </div>
-            <p className="text-bizBlue/80 font-bold text-sm leading-relaxed">{desc}</p>
-        </div>
-    );
-}
-
-function ProcessStep({ step, icon, title, desc }) {
+function ProcessModule({ step, icon, title, desc }) {
   return (
-    <div className="text-center group relative z-10">
-      <div className="w-24 h-24 mx-auto bg-bizYellow rounded-full flex items-center justify-center text-bizBlue mb-8 group-hover:bg-bizBlue group-hover:text-white transition-all shadow-xl border-4 border-white dark:border-bizDark">
-        {icon}
-        <span className="absolute -top-1 -right-1 bg-bizRed text-white text-xs font-black w-10 h-10 rounded-full flex items-center justify-center border-4 border-white dark:border-bizDark">
+    <div className="text-center group">
+      <div className="w-24 h-24 mx-auto bg-white text-bizBlue rounded-[2rem] flex items-center justify-center mb-8 relative rotate-3 group-hover:rotate-0 transition-transform shadow-2xl">
+        {React.cloneElement(icon, { size: 32 })}
+        <span className="absolute -top-3 -right-3 bg-bizRed text-white text-[10px] font-black w-10 h-10 rounded-full flex items-center justify-center border-4 border-bizBlue">
           {step}
         </span>
       </div>
-      <h4 className="text-xl font-black text-bizBlue dark:text-bizYellow uppercase mb-3">{title}</h4>
-      <p className="text-sm text-gray-600 dark:text-gray-400 font-bold leading-relaxed">{desc}</p>
+      <h4 className="text-2xl font-black text-bizYellow uppercase mb-3 italic tracking-tighter">{title}</h4>
+      <p className="text-white/60 font-bold leading-snug">{desc}</p>
     </div>
   );
 }
