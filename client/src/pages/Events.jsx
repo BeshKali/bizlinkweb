@@ -71,12 +71,12 @@ export default function Events() {
     <main className="min-h-screen bg-white dark:bg-[#0a0f1a] text-bizBlue dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
       
       {/* --- 1. HUD HERO SECTION --- */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative w-screen h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with Mesh and Gradient */}
         <div className="absolute inset-0 z-0">
           <picture>
             <source media="(max-width: 768px)" srcSet="https://bizlinkads.co.ke/wp-content/themes/wordpressbizlinkchild/assets/images/NaivashaXpo2025/vashamobileposter.jpg" />
-            <img src="https://bizlinkads.co.ke/wp-content/themes/wordpressbizlinkchild/assets/images/landing/hero-events.jpg" className="w-full h-full object-cover grayscale-[50%] dark:grayscale" alt="Expo" />
+            <img src="https://bizlinkads.co.ke/wp-content/themes/wordpressbizlinkchild/assets/images/landing/hero-events.jpg" className="w-full h-full object-contain grayscale-[50%] dark:grayscale" alt="Expo" />
           </picture>
           <div className="absolute inset-0 bg-gradient-to-tr from-bizBlue via-transparent to-bizBlue/40 dark:from-[#0a0f1a] dark:to-[#0a0f1a]/80" />
           {/* Tech Grid */}
