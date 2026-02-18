@@ -38,7 +38,7 @@ export default function BrandIdentity() {
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-bizBlue">System Node: Identity Core</span>
             </div>
 
-            <h1 className="text-6xl md:text-[100px] font-black text-bizBlue mb-8 uppercase tracking-tighter leading-[0.85] italic">
+            <h1 className="text-3xl md:text-[100px] font-black text-bizBlue mb-8 uppercase tracking-tighter leading-[0.85] italic">
               Brand <br /> 
               <span className="text-transparent" style={{ WebkitTextStroke: '2px #1E3A8A' }}>Enhancement</span>
             </h1>
@@ -168,7 +168,7 @@ export default function BrandIdentity() {
           </div>
           
           <div className="relative z-10 text-center">
-            <h2 className="text-5xl md:text-[80px] font-black uppercase mb-8 leading-[0.85] tracking-tighter italic">Initialize Brand <br /> Transformation?</h2>
+            <h2 className="text-3xl md:text-[80px] font-black uppercase mb-8 leading-[0.85] tracking-tighter italic">Initialize Brand <br /> Transformation?</h2>
             <p className="font-bold text-2xl mb-12 max-w-2xl mx-auto leading-tight opacity-70">
               Establish an identity that leads your industry and builds unmatched authority.
             </p>

@@ -39,7 +39,7 @@ export default function ExperientialPR() {
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-bizBlue">System Node: PR-Activation Sync</span>
             </div>
 
-            <h1 className="text-6xl md:text-[100px] font-black text-bizBlue mb-8 uppercase tracking-tighter leading-[0.85] italic">
+            <h1 className="text-3xl md:text-[100px] font-black text-bizBlue mb-8 uppercase tracking-tighter leading-[0.85] italic">
               Experiential <br /> 
               <span className="text-transparent" style={{ WebkitTextStroke: '2px #1E3A8A' }}>Impact</span>
             </h1>

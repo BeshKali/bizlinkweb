@@ -109,7 +109,7 @@ export default function PrintMediaDigital() {
           <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
             <div className="max-w-2xl">
               <h2 className="text-sm font-black text-bizRed uppercase tracking-[0.5em] mb-4">Service Protocol 01</h2>
-              <h3 className="text-5xl md:text-7xl font-black text-bizBlue dark:text-white uppercase leading-none tracking-tighter italic">
+              <h3 className="text-3xl md:text-7xl font-black text-bizBlue dark:text-white uppercase leading-none tracking-tighter italic">
                 Physical <br /> <span className="text-bizYellow">Infrastructure</span>
               </h3>
             </div>

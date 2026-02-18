@@ -163,7 +163,7 @@ export default function OutdoorVisibility() {
           </div>
           
           <div className="relative z-10 text-center text-bizBlue">
-            <h2 className="text-5xl md:text-[80px] font-black uppercase mb-8 leading-[0.85] tracking-tighter italic">
+            <h2 className="text-3xl md:text-[80px] font-black uppercase mb-8 leading-[0.85] tracking-tighter italic">
               Ready to Initialize <br /> City Dominance?
             </h2>
             <p className="text-bizBlue/70 font-bold text-2xl mb-12 max-w-2xl mx-auto leading-tight">
