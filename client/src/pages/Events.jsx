@@ -87,8 +87,8 @@ export default function Events() {
         <div className="absolute top-40 left-10 w-20 h-20 border-t-2 border-l-2 border-bizYellow opacity-50 hidden lg:block" />
         <div className="absolute top-40 right-10 w-20 h-20 border-t-2 border-r-2 border-bizRed opacity-50 hidden lg:block" />
 
-        <div className="relative z-10 text-center px-6 max-w-6xl">
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 rounded-full mb-10">
+        <div className="relative top-0 z-10 text-center px-6 max-w-6xl">
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-transparent-md border border-white/20 px-6 py-6 rounded-full mb-10">
             <span className="flex h-2 w-2 rounded-full bg-bizRed animate-pulse" />
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white">Live Event Briefing</span>
           </div>
