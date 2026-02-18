@@ -116,7 +116,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row justify-between items-start mb-24 gap-12">
             <div className="max-w-2xl">
-              <h2 className="text-6xl md:text-8xl font-black text-bizBlue dark:text-white uppercase leading-[0.9] mb-8">
+              <h2 className="text-3xl md:text-6xl font-black text-bizBlue dark:text-white uppercase leading-[0.9] mb-8">
                 Digital <br /><span className="text-bizYellow">Infrastructure</span>
               </h2>
               <div className="h-2 w-48 bg-bizRed rounded-full" />
