@@ -77,7 +77,10 @@ export default function Agriculture() {
                 <div className="text-bizRed font-black text-xs uppercase mb-3 tracking-widest">{post.date}</div>
                 <h3 className="text-2xl font-black text-bizBlue dark:text-white uppercase mb-4 leading-tight group-hover:text-bizRed transition-colors">{post.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 font-medium mb-6">{post.desc}</p>
-                <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 font-black text-bizBlue dark:text-bizYellow uppercase text-sm border-b-4 border-bizYellow hover:border-bizRed transition-all pb-1">
+                {/* <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 font-black text-bizBlue dark:text-bizYellow uppercase text-sm border-b-4 border-bizYellow hover:border-bizRed transition-all pb-1">
+                    Read Report <ArrowRight size={16} />
+                </Link> */}
+                <Link to={'#'} className="inline-flex items-center gap-2 font-black text-bizBlue dark:text-bizYellow uppercase text-sm border-b-4 border-bizYellow hover:border-bizRed transition-all pb-1">
                     Read Report <ArrowRight size={16} />
                 </Link>
               </article>

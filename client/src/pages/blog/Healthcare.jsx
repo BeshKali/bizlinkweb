@@ -80,18 +80,34 @@ export default function Healthcare() {
 
       {/* --- BLOG GRID SECTION (CLEAN THEME) --- */}
       <section className="py-24 px-6 bg-white dark:bg-bizDark transition-colors">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div>
-              <h2 className="text-4xl md:text-6xl font-black text-bizBlue dark:text-bizYellow uppercase leading-none mb-4">
-                Industry <br /> Reports
-              </h2>
-              <div className="h-2 w-32 bg-bizRed" />
-            </div>
-            <p className="text-gray-600 dark:text-gray-400 font-bold max-w-md text-lg">
-              Expert analysis on digital health adoption, private sector transformation, and global wellness trends.
-            </p>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="flex flex-col lg:flex-row justify-between lg:items-end mb-12 sm:mb-16 lg:mb-20 gap-8">
+    
+    {/* Title block */}
+    <div className="max-w-xl">
+      <h2 className="
+        text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
+        font-black text-bizBlue dark:text-bizYellow uppercase
+        leading-[0.9] tracking-tighter mb-4
+      ">
+        Industry <br className="hidden sm:block" /> Reports
+      </h2>
+      <div className="h-2 w-20 sm:w-24 md:w-32 bg-bizRed" />
+    </div>
+
+    {/* Description */}
+    <p className="
+      text-sm sm:text-base md:text-lg lg:text-xl
+      text-gray-600 dark:text-gray-400
+      font-bold leading-relaxed
+      max-w-full lg:max-w-md
+    ">
+      Expert analysis on digital health adoption, private sector transformation,
+      and global wellness trends.
+    </p>
+
+  </div>
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {articles.map((post, idx) => (
@@ -111,9 +127,12 @@ export default function Healthcare() {
                     </p>
                 </div>
                 {/* Fixed Dynamic Link for Blog Posts */}
-                <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 font-black text-bizBlue dark:text-bizYellow uppercase text-sm border-b-4 border-bizYellow hover:border-bizRed transition-all pb-1 w-fit">
+                {/* <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 font-black text-bizBlue dark:text-bizYellow uppercase text-sm border-b-4 border-bizYellow hover:border-bizRed transition-all pb-1 w-fit">
                     Read Report <ArrowRight size={16} />
-                </Link>
+                </Link> */}
+                  <Link to={'#'} className="inline-flex items-center gap-2 font-black text-bizBlue dark:text-bizYellow uppercase text-sm border-b-4 border-bizYellow hover:border-bizRed transition-all pb-1">
+                                    Read Report <ArrowRight size={16} />
+                   </Link>
               </article>
             ))}
           </div>

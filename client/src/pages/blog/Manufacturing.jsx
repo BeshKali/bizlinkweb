@@ -50,7 +50,7 @@ export default function Manufacturing() {
             <div className="inline-flex items-center gap-2 bg-bizRed text-white px-4 py-1 rounded mb-6 text-xs font-black uppercase tracking-widest animate-pulse">
               <Settings size={14} /> Industrial Dominance
             </div>
-            <h1 className="text-5xl md:text-8xl font-black mb-6 uppercase tracking-tighter leading-[0.85]">
+            <h1 className="text-3xl md:text-8xl font-black mb-6 uppercase tracking-tighter leading-[0.85]">
               Manufacturing <br /> 
               <span className="text-white drop-shadow-md">Insights</span>
             </h1>
@@ -80,18 +80,33 @@ export default function Manufacturing() {
 
       {/* --- BLOG GRID SECTION (CLEAN THEME) --- */}
       <section className="py-24 px-6 bg-white dark:bg-bizDark transition-colors">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div>
-              <h2 className="text-4xl md:text-6xl font-black text-bizBlue dark:text-bizYellow uppercase leading-none mb-4">
-                Production <br /> Reports
-              </h2>
-              <div className="h-2 w-32 bg-bizRed" />
-            </div>
-            <p className="text-gray-600 dark:text-gray-400 font-bold max-w-md text-lg">
-              Discover industrial developments and manufacturing innovations driving modern business in Kenya.
-            </p>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="flex flex-col lg:flex-row justify-between lg:items-end mb-12 sm:mb-16 lg:mb-20 gap-8">
+    
+    {/* Title */}
+    <div className="max-w-xl">
+      <h2 className="
+        text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
+        font-black text-bizBlue dark:text-bizYellow uppercase
+        leading-[0.9] tracking-tighter mb-4
+      ">
+        Production <br className="hidden sm:block" /> Reports
+      </h2>
+      <div className="h-2 w-20 sm:w-24 md:w-32 bg-bizRed" />
+    </div>
+
+    {/* Description */}
+    <p className="
+      text-sm sm:text-base md:text-lg lg:text-xl
+      text-gray-600 dark:text-gray-400
+      font-bold leading-relaxed
+      max-w-full lg:max-w-md
+    ">
+      Discover industrial developments and manufacturing innovations driving modern business in Kenya.
+    </p>
+
+  </div>
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {articles.map((post, idx) => (
