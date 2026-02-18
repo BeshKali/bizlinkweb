@@ -189,7 +189,7 @@ export default function PrintMediaDigital() {
              <Layers size={300} />
           </div>
           <div className="relative z-10 text-center text-bizBlue">
-            <h2 className="text-5xl md:text-[80px] font-black uppercase mb-8 leading-[0.85] tracking-tighter italic">Ready to Initialize <br /> Market Dominance?</h2>
+            <h2 className="text-3xl md:text-[80px] font-black uppercase mb-8 leading-[0.85] tracking-tighter italic">Ready to Initialize <br /> Market Dominance?</h2>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link to="/contact-us-2" className="bg-bizBlue text-white px-12 py-6 rounded-2xl font-black uppercase text-sm tracking-widest hover:bg-bizRed transition-all shadow-xl">
                     Request Strategic Quote
